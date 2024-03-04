@@ -6,7 +6,7 @@ cd PiFmRds/src
 make clean
 make
 
-GPIO Pin 4 on Raspberry Pi is the Antenna/transmit pin.
+GPIO4 Pin 7 on Raspberry Pi is the Antenna/transmit pin.
   Connect a cable to it to increase transmit strenth
 
 sudo ./pi_fm_rds -freq 102.000 -audio sound.wav -ps KMOD -rt 'Rockin!'
