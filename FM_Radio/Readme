@@ -1,0 +1,17 @@
+Transmit Radio with Raspberri PI
+
+apt-get install libsndfile1-dev
+git clone https://github.com/ChristopheJacquet/PiFmRds.git
+cd PiFmRds/src
+make clean
+make
+
+GPIO Pin 4 on Raspberry Pi is the Antenna/transmit pin.
+  Connect a cable to it to increase transmit strenth
+
+sudo ./pi_fm_rds -freq 102.000 -audio sound.wav -ps KMOD -rt 'Rockin!'
+
+convert mp3 to wav:
+  apt-get install mpg123
+  mpg123 -w ouput.wav input.mp3
+
