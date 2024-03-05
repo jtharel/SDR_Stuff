@@ -6,12 +6,23 @@ cd PiFmRds/src
 make clean
 make
 
-GPIO4 Pin 7 on Raspberry Pi is the Antenna/transmit pin.
+GPIO4/Pin 7 on Raspberry Pi is the Antenna/transmit pin.
   Connect any cable to it to increase transmit strenth
 
-sudo ./pi_fm_rds -freq 102.000 -audio sound.wav -ps KMOD -rt 'Rockin!'
+cd ~/PiFmRds/src
+sudo ./pi_fm_rds -freq 92.000 -audio sound.wav -ps KMOD -rt 'Rockin!'
 
 convert mp3 to wav:
   apt-get install mpg123
   mpg123 -w ouput.wav input.mp3
 
+
+Example of piping an mp3 to pi_fm_rds:
+	sox -t mp3 http://www.linuxvoice.com/episodes/lv_s02e01.mp3 -t wav -  | sudo ./pi_fm_rds -audio -
+
+
+On Newer Raspberri PIs:
+echo "performance"| sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+use frequencies below 93.5 MHz
+sudo ./pi_fm_rds -audio pulses.wav -freq 92
+RF Gain around 40 or so seems to work the best
