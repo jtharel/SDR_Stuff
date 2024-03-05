@@ -1,10 +1,12 @@
 International Space Station (ISS)
 
 Small windows of time when this will work
-Use mobile app to see when ISS is overhead:
+Use mobile app ISS Detector on iPhone to see when ISS is overhead:
   https://apps.apple.com/us/app/iss-detector/id1198597805
     
+Get ISS decoding tool:
+  https://hamsoft.ca/pages/mmsstv.php
 
-Install mmsstv113a.exe and run it
+Install mmsstv113a.exe  and run it
 Launch SDSharp -> set to 145.800.000 Mhz and click run
   mmsstv113a.exe will automatically decode the signal
