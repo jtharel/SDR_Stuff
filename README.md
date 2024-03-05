@@ -17,12 +17,11 @@ Receive
 -> NRF -> transceiver in the 2.4 Ghz range, used for remotes, keyboards and mice
     
 -> POCSAG -> Is Radio-paging code No. 1 (Pagers) -> 153.3500?
-
-   	Try ranges: 26 27 35 43 151 152 154 157 163 439 
-       	454.0125 - 454.5000 12.5 kHz steps 
- 	462.7500 - 462.9250 25 kHz steps
-  	929.0125 - 929.9875 12 kHz steps
- 	931.0125 = 931.9875 12 kHz steps
+Try ranges: 26 27 35 43 151 152 154 157 163 439 
+454.0125 - 454.5000 12.5 kHz steps 
+462.7500 - 462.9250 25 kHz steps
+929.0125 - 929.9875 12 kHz steps
+931.0125 = 931.9875 12 kHz steps
    	
     	Medical Paging: 152.0075, 157.4500, 163.2500
 	Ham Radio: 439.9875
