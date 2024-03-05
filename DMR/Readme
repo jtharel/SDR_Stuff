@@ -33,6 +33,22 @@ Install the plugin
 
 		click "Start DSD"
 
+		You should see in the command prompt looking window:
+			audio input device #1 - 'CABLE Output (VB-Audio Virtual'
+			audio input device #2 - 'Microphone Array (IDI High Defi'
+	
+			audio output device #1 - 'Speakers / Headphones (IDI High'
+			audio output device #2 - 'CABLE input (VB-Audio Virtual C'
+
+			audio input device #1 (CABLE Output (VB-Audio Virtual ) initialized
+			audio output device #2 (CABLE Input (VB-Audio Virtual C) initialized
+
+			When clicking configure in the "DSD Interface" you may have to mess with the command line
+				-O NUL -I0 -M15 -v2 -i1 -o2 ...  (-i2 -o2 was what was needed on VM)
+					-i1 is input device 1
+					-o2 is output device 2
+						may need to change these 2 values so the above output is correct
+
 
 
 This shows frequencys used in your area, etc.
