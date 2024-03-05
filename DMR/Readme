@@ -11,6 +11,18 @@ DSDPlus -> decode DMR
 SDRSharp plugin 
 	https://www.rtl-sdr.com/wp-content/uploads/2013/05/dsd.zip
 
-Extract both zip files
+Install DSD
+	Extract both zip files
 	copy all files from DLLs to the DSDPlus directory
 
+Install the plugin 
+	Extract the zip file
+	copy the SDRSharp.DSD.dll to the SDSharp directory
+
+	copy the contents of the MagicLine.txt file to the clipboard
+	
+	open the Plugins.xml file in the SDSharp directory and paste the line from the 
+	MagicLine.xml file into the <sharpPlugins> </sharpPlugins> section
+
+
+	launch SDSharp, on the left you should see "DSD Interface" section
