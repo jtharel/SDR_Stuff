@@ -25,3 +25,10 @@ Install the plugin
 	MagicLine.xml file into the <sharpPlugins> </sharpPlugins> section
 
 	launch SDSharp, on the left you should see "DSD Interface" section
+		click the configure button here
+		DSD path will be incorrrect. Double click it to update it
+		Click the Decoder Options tab and make sure "Auto detect" is selected	
+	
+		change the Audio Device to Cable Input VB-Audio Virtual Cable
+
+		click "Start DSD"
