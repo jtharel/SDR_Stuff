@@ -24,5 +24,4 @@ Install the plugin
 	open the Plugins.xml file in the SDSharp directory and paste the line from the 
 	MagicLine.xml file into the <sharpPlugins> </sharpPlugins> section
 
-
 	launch SDSharp, on the left you should see "DSD Interface" section
