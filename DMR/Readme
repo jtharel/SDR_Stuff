@@ -1,1 +1,16 @@
-blah
+DMR -> Digital Mobile Radio, digital two-way radio
+
+
+Virtual Audio Cable -> transfer audio streams from one applicatino to another
+	https://www.vb-audio.com/Cable/
+
+DSDPlus -> decode DMR
+	https://www.dsdplus.com/download-2/
+	Dowload DSDPlus and DSDPlus_DLLs
+
+SDRSharp plugin 
+	https://www.rtl-sdr.com/wp-content/uploads/2013/05/dsd.zip
+
+Extract both zip files
+	copy all files from DLLs to the DSDPlus directory
+
