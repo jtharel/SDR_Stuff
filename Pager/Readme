@@ -26,6 +26,8 @@ Start PDW:
 		Sample Rate:	44100
 		Soundcard:	CABLE Output (VB-Audio Virtual
 
+Send test page on raspberry pi in rpitx:
+	printf "1:This is mesg 1\n2:Message 2\n3:This is a 3rd message\n" | sudo ./pocsag -f 434000000
 
 
 153.3500?
