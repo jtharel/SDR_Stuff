@@ -6,6 +6,27 @@ Virtual Audio Cable -> transfer audio streams from one applicatino to another
 
 Paging Decoder Software:
 	https://www.discriminator.nl/pdw/index-en.html
+	Don't worry about the slicer driver, it's not needed.
+
+Once Virtual Audio Cable is installed:
+Go into Control Panel -> Hardware and Sound -> Sound -> Double click CABLE Input -> Advanced
+	set to 16 bit 44100 Hz (CD Quality)
+
+In SDSharp:
+	Select NFM (Narrow FM not WFM)
+	Bandwidth: 	25,000
+	Order:		10
+	Step Size: 	12.5kHz
+	Audio output:	Windows DirectSound CABLE Input (VB-Audio Virtual Cable)
+	Filter Audio:	Unchecked
+
+Start PDW:
+	Interface menu -> Setup 
+		Configuration:	Custom
+		Sample Rate:	44100
+		Soundcard:	CABLE Output (VB-Audio Virtual
+
+
 
 153.3500?
 Try ranges: 26 27 35 43 151 152 154 157 163 439 
