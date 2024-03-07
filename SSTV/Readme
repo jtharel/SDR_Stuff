@@ -1,0 +1,16 @@
+SSTV Broadcast from Raspberry Pi
+
+Convert Image to Wav file:
+	pip3 install pysstv
+
+	pysstv image.png image.png.wav
+
+SDRSharp -> Audio -> Output -> Windows Direct Sound CABLE Input (VB-Audio Virtal Cable)
+MMSSTV -> Option -> Select CABLE Output VB-Audio Virtual Cable 
+	Make sure this is the default
+	
+	
+From Raspberry Pi:
+	cd PiFmRds/src
+	sudo ./pi_fm_rds -freq 92.1 -audio image.png.wav
+		using pi_fm_rds only allows FM frequency range (88 - 107 Mhz)
