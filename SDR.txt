@@ -1,0 +1,448 @@
+RTL SDR Receiver: 25MHz - 1750 Mhz
+	Can not transmit
+
+
+HackRF One: 1Mhz - 6Ghz
+	Can transmit
+	Half duplex
+
+ADALM-PLUTO SDR: 325Mhz - 3.8Ghz
+	Can transmit
+	Full Duplex
+
+
+
+SDR Devices Addons:
+
+	Up Converter: 100Khz - upwards
+		Can add to RTL SDR to get more frequencies
+		Can not transmit
+		(NooElec
+
+
+Antennas:
+	Telescopic Antenna
+		Can not cover a wide range of frequencies
+	
+	Balun
+		wire based antenna, raw wire can be attached
+
+
+https://www.sigidwiki.com/wiki/Database	-> database of known signals
+https://www.sigidwiki.com/wiki/Signal_Identification_Guide
+
+FCC ID database:
+	https://www.fcc.gov/oet/ea/fccid
+
+**********************************************************************************************************************************
+Windows Tools:
+	
+Zadig USB driver installation:
+	https://zadig.akeo.ie
+
+SDRSharp:
+	https://airspy.com/download/
+	https://www.iz3mez.it/software/SDRSharp/	-> older versions here v1664 is a good stable version
+		After installing run -> install-rtlsdr.bat file
+
+SDR Console v3:
+	www.sdr-radio.com
+
+
+**********************************************************************************************************************************
+
+
+Linux Tools:
+
+GQRX
+
+gr-osmosdr -> jamming utiltiy
+**********************************************************************************************************************************
+
+
+What is Frequency?
+Wave is vibration that carries energy. (think a sine wave)
+Frequency is the number of waves completed in 1 seconds time
+Frequency is measured in Hertz. F = n/s
+	(F)requency is the (n)umber of cycles per (s)econd
+
+1 Khz = 1,000 Cycles per second
+1 Mhz = 1,000,000 Cycles per second
+1 Ghz = 1,000,000,000 Cycles per second
+	
+Radio Frequency is electromagnetic wave with alternating current (AC)
+	it is in the range 3KHz to 300 GHz
+
+Wavelength is the distance bedtween two peaks or troughs
+
+  _______     _     
+ / \   / \   / \
+    \_/   \_/___\_/
+
+Abbreviation	Frequencies		Designation			Wavelength		Usage
+VLF		3 Khz 	- 30 Khz	Very Low Frequency		100 km - 10 km		Submarines, 
+												sync clock between 2 location
+LF		30 Khz 	- 300 Khz	Low Frequency			10 km - 1 km		long distance communication
+												AM broadcasting
+MF		300 Khz	- 3 Mhz		Medium Frequency		1 km - 100 m		Most popular, amateur radio
+HF		3 Mhz	- 30 Mhz	High Frequency			100 m - 10 m		Short wave, flight comms		
+VHF		30 Mhz	- 300 Mhz	Very High Frequency		10 m - 1 mm		TV and FM radio
+UHF		300 Mhz	- 3 Ghz		Ultra High Frequency		1 m - 100 mm		GSM, CDMA and LTE, Wi-FI, BTLE
+SHF		3 Ghz	- 30 Ghz	Super High Frequency		100 mm - 10 mm		Line of site, satelite, 5G
+EHF		30 Ghz	- 300 Ghz	Extremely High Frequency	10 mm - 1 mm		Line of Site, Future transmission
+
+
+SDR Sharp
+	Mak esure "WFM" (Wide FM) is slected when listening to FM radio
+
+
+**********************************************************************************************************************************
+Aircraft Tracking:
+	Dump 1090
+		http://www.satsignal.eu/software/dump1090-win.1.10.3010.14.zip
+
+	Virtual Radar Server
+		http://www.virtualradarserver.co.uk
+		http://www.virtualradarserver.co.uk/Files/VirtualRadarSetup.exe
+
+**********************************************************************************************************************************
+International Space Station:
+
+Frequency 145.800MHz
+
+ISS Detection depends on Time ISS is overhead
+
+Need ISS Decoding Tools
+
+Install ISS Detector on your iPhone
+https://apps.apple.com/us/app/iss-detector/id1198597805
+	Will tell you when the ISS is overhead
+
+Get ISS decoding tool:
+	https://hamsoft.ca/pages/mmsstv.php
+		mmsstv113a.exe
+
+Install mmsstv113a.exe and run it
+Launch SDRSharp -> set to 145.800.000 Mhz and click run
+	mmsstv113a.exe will automatically decode the signal
+
+
+**********************************************************************************************************************************
+
+Wireless bell and Switch Frequecy is between 300 Mhz and 433 Mhz
+
+
+Avalon Car remote
+	Lock/unlock/trunk	000.314.325.000	Mhz
+
+
+
+**********************************************************************************************************************************
+Transmit Radio with Raspberry Pi
+
+Radio Data System data generated in real time
+https://github.com/ChristopheJacquet/PiFmRds
+
+sudo apt-get install libsndfile1-dev
+git clone https://github.com/ChristopheJacquet/PiFmRds.git
+cd PiFmRds/src
+make clean
+make
+
+GPIO4/Pin 7 is the default for the Antenna
+
+cd ~/PiFmRds/src
+sudo ./pi_fm_rds -freq 102.000 -audio sound.wav -ps JimmyRadio -rt 'Bang your head'
+
+convert mp3 to wav:
+	sudo apt-get install mpg123
+	mpg321 -w output.wav input.mp3
+
+Example of piping an mp3 to pi_fm_rds:
+	sox -t mp3 http://www.linuxvoice.com/episodes/lv_s02e01.mp3 -t wav -  | sudo ./pi_fm_rds -audio -
+
+On Newer Raspberri PIs:
+echo "performance"| sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+use frequencies below 93.5 MHz
+sudo ./pi_fm_rds -audio pulses.wav -freq 92
+RF Gain around 40 or so seems to work the best
+
+**********************************************************************************************************************************
+Pager data
+
+
+Virtual Audio Cable -> transfer audio streams from one applicatino to another
+	https://www.vb-audio.com/Cable/
+
+Paging Decoder Software:
+	https://www.discriminator.nl/pdw/index-en.html
+	Don't worry about slice driver, not needed
+
+
+Once Virtual Audio Cable is installed:
+Go into Control Panel -> Hardware and Sound -> Sound -> Double click CABLE Input -> Advanced
+	set to 16 bit 44100 Hz (CD Quality)
+
+In SDSharp:
+	Select NFM (Narrow FM not WFM)
+	Bandwidth: 	25,000
+	Order:		10
+	Step Size: 	12.5kHz
+	Audio output:	Windows DirectSound CABLE Input (VB-Audio Virtual Cable)
+	Filter Audio:	Unchecked
+
+Start PDW:
+	Interface menu -> Setup 
+		Configuration:	Custom
+		Sample Rate:	44100
+		Soundcard:	CABLE Output (VB-Audio Virtual
+		
+
+Send test page on raspberry pi in rpitx:
+	printf "1:This mesg1\n2:Message 2\n3:This is a 3rd message\n" | sudo ./pocsag -f 434000000
+
+
+
+**********************************************************************************************************************************
+
+DMR -> Digital Mobile Radio, digital two-way radio
+
+
+Virtual Audio Cable -> transfer audio streams from one applicatino to another
+	https://www.vb-audio.com/Cable/
+
+DSDPlus -> decode DMR
+	https://www.dsdplus.com/download-2/
+	Dowload DSDPlus and DSDPlus_DLLs
+
+SDRSharp plugin 
+	https://www.rtl-sdr.com/wp-content/uploads/2013/05/dsd.zip
+
+Install DSD
+	Extract both zip files
+	copy all files from DLLs to the DSDPlus directory
+
+Install the plugin 
+	Extract the zip file
+	copy the SDRSharp.DSD.dll to the SDSharp directory
+
+	copy the contents of the MagicLine.txt file to the clipboard
+	
+	open the Plugins.xml file in the SDSharp directory and paste the line from the 
+	MagicLine.xml file into the <sharpPlugins> </sharpPlugins> section
+
+
+	launch SDSharp, on the left you should see "DSD Interface" section
+		click the configure button here
+		DSD path will be incorrrect. Double click it to update it
+		Click the Decoder Options tab and make sure "Auto detect" is selected	
+	
+		change the Audio Device to Windows Direct Sound Cable Input VB-Audio Virtual Cable
+			do this for both the "DSD Interface" and "Audio" sections on the left
+
+		click "Start DSD"
+
+		You should see in the command prompt looking window:
+			audio input device #1 - 'CABLE Output (VB-Audio Virtual'
+			audio input device #2 - 'Microphone Array (IDI High Defi'
+	
+			audio output device #1 - 'Speakers / Headphones (IDI High'
+			audio output device #2 - 'CABLE input (VB-Audio Virtual C'
+
+			audio input device #1 (CABLE Output (VB-Audio Virtual ) initialized
+			audio output device #2 (CABLE Input (VB-Audio Virtual C) initialized
+
+			When clicking configure in the "DSD Interface" you may have to mess with the command line
+				-O NUL -I0 -M15 -v2 -i1 -o2 ...  (-i2 -o2 was what was needed on VM)
+					-i1 is input device 1
+					-o2 is output device 2
+						may need to change these 2 values so the above output is correct
+
+
+This shows frequencys used in your area, etc.
+https://digitalfrequencysearch.com/Search.php
+
+	153.665	- 159.69	Denver Water
+	451.350	- 456.725	Platte Canyon School District
+	463.000 - 468.687	Jeffco Public Schools
+	453.000 - 463.6878	Jeff Co School District
+
+**********************************************************************************************************************************
+
+
+Install transmitting tool on Raspberry Pi
+
+git clone https://github.com/F5OEO/rpitx
+cd rpitx
+./install.sh
+
+	look in the output for files missing semi-colons ;. You may need to add them to certain files to get the install to work
+
+./easytest.sh
+	434.0 
+	select the differernt options to create different frequency types
+ 
+
+**********************************************************************************************************************************
+
+Record SDR on the Raspberry Pi 
+	Record:	
+	rtl_sdr -s 250000 -g 40 -f 433912500 capture.cap
+		-s 250000	sample rate
+		-g 40		gain
+		-f 433912500		frequency 433.912.500 Mhz
+		capture.cap
+
+	Replay:
+	(tool installed with rpitx)
+	sudo sendiq -s 250000 -f 433912500 -t u8 -i capture.cap
+		-s		sample rate
+		-f		frequency
+		-t		file type
+		-i		captured file to replay
+
+	Avalon:
+		rtl_sdr -s 250000 -g 42 -f 314325000 avalon_lock.cap
+		sudo sendiq -s 250000 -f 314325000 -t u8 -i avalon_lock.cap
+
+**********************************************************************************************************************************
+HackRF on Windows
+	run Zadig
+	Options Menu -> List All Devices -> Select HackRF One
+		If driver version is newer install it. If not, keep existing version
+
+
+**********************************************************************************************************************************
+SSTV Broadcast from Raspberry Pi
+
+Convert Image to Wav file:
+	pip3 install pysstv
+
+	pysstv image.png image.png.wav
+
+SDRSharp -> Audio -> Output -> Windows Direct Sound CABLE Input (VB-Audio Virtal Cable)
+MMSSTV -> Option -> Select CABLE Output VB-Audio Virtual Cable 
+	Make sure this is the default
+	
+
+From Raspberry Pi:
+	cd PiFmRds/src
+	sudo ./pi_fm_rds -freq 92.1 -audio image.png.wav
+		using pi_fm_rds only allows FM frequency range (88 - 107 Mhz)
+
+
+**********************************************************************************************************************************
+
+GSM Sniffing
+
+IMSI (International Mobile Subscriber Identity) -> unique ID for every user of a cellular network
+	15-digit number usually
+	
+GSM Frequency Bands
+	https://en.wikipedia.org/wiki/GSM_frequency_bands
+
+How to scan for GSM bands if they are not known
+On Kali Linux:
+	apt-get install gqrx-sdr kalibrate-rtl gr-gsm 
+
+	
+
+kal -s GSM850 -g 45
+	-s 	band to scan (GSM850, GSM-R, GSM900, EGSM, DCS, PCS)
+		850 Mhz is North America
+	-g	gain in dB
+
+	Example Output:
+	chan: 225 (888.6HHz - 29.232kHz)  power: 215801.32
+	chan: 236 (890.8MHz + 36.226kHz)  power:  61568.93
+
+
+git clone https://github.com/Oros42/IMSI-catcher.git
+	cd ISMI-catcher
+	python ./simple_IMSI-catcher.py --sniff
+
+grgsm_livemon
+
+gqrx
+
+**********************************************************************************************************************************
+
+Spy on a Monitor
+
+https://github.com/SecureTechware/monitor-sniffing
+
+Tempest-Test-for-Windows-v1-1.zip -> install on victim machine
+
+TempestSDRTool.zip -> attacker machine
+
+350 - 450 Mhz on NFM!!!!!!!!!!
+
+Samsung Monitor -> 1920 x 1080 at 60Hz
+
+Hannspree -> 1920 x 1200 at 59.950Hz
+	399.975.934
+	403.203.420
+	407.998.626
+	410.666.171
+
+	412.075.000
+
+Zoom FFT -> check Enable MPX
+**********************************************************************************************************************************
+RF Jamming
+
+Use raspberry pi to play music:
+		cd PiFmRds/src/
+		sudo ./pi_fm_rds -freq 434.0 -audio Low_Rider.wav
+
+Use SDSharp to listen to something on a known frequency using RTL-SDR
+
+One Kali Linux (with transmit device (HackRF 1, etc):
+apt-get install gr-osmosdr
+	osmocom_siggen 
+		Center Frequency:	434.0M
+
+		Play with the following example settings and watch what happens in SDSharp
+		Freq. Correction (ppm):	80.4
+		RF Gain(db):		14.0
+		IF Gain (db):		39.0
+		Bandwidth (Hz):		14.75 
+
+**********************************************************************************************************************************
+GPS Spoofing Using HackRF One on Kali Linux:
+
+https://github.com/osqzss/gps-sdr-sim.git
+cd gps-sdr-sim
+gcc gpssim.c -lm -O3 -o gps-sdr-sim
+	# -O3 -> that is a capital oh O
+
+Get latest GPS coordinates from: https://cddis.gsfc.nasa.gov/archive/gnss/data/daily/202X/brdc/brdcXXXX.24n.gz 
+	make sure you get the one for the current days date or this won't work
+	save file into gps-sdr-sim directory
+	gunzip brdc0680.24n.gz
+
+Get cordinates to use in spoofing from Google Maps.
+	Right click spot on map -> click coordinates and it will put them in clip board
+	-76.08582139264219, 15.820311879669028  -> Antarctica
+
+./gps-sdr-sim -b 8 -e brdc0680.24n -l -76.085821,15.820311,100
+	-b 8		8 bits
+	-e brdcxxxx.xxx	file downloaded from Nasa
+	-l x,x,100	location lat,log,hight
+
+	this generates a gpssim.bin file very large in size (1.5GB) and can take a while 
+
+sudo apt-get install hackrf
+
+cd ~/gps-sdr-sim
+	
+hackrf_transfer -t gpssim.bin -f 1575420000 -s 2600000 -a 1 -x 0
+	-t gpssim.bin	gps file create earlier
+	-f 		frequency
+	-s		sample rate
+	-a 1		amplify  1 is enable 0 is disable
+	-x 0 		gain
+
+
+
+
