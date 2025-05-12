@@ -11,6 +11,7 @@ GPIO4/Pin 7 on Raspberry Pi is the Antenna/transmit pin.
 
 cd ~/PiFmRds/src
 sudo ./pi_fm_rds -freq 92.000 -audio sound.wav -ps KMOD -rt 'Rockin!'
+	-ppm 920000	might need this arugment if it sounds like it is in slow motion.
 
 
 
